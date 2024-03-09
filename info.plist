@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string>automator.rule.surge</string>
+	<key>category</key>
+	<string>Tools</string>
+	<key>connections</key>
+	<dict>
+		<key>2F32F33B-9FFC-4C0A-A411-B7FDD35394C8</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>813CD164-0871-4F71-B0D2-57B1CE1A70B1</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>C99D895C-3EB1-4CE3-9FF7-DE5CE241C683</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>A71E95F3-C424-4EF8-8550-BB04C89451B8</string>
+				<key>modifiers</key>
+				<integer>524288</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Lukas</string>
+	<key>description</key>
+	<string>Quickly add a rule to Surge</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Surge Rule Helper</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+  tell application "System Events"	tell process "Surge"		try			if (value of static text of sheet 1 of window "Surge") as string is equal to "New Standard Rule" then				click button "Cancel" of sheet 1 of window "Surge"			end if		end try		click menu item "Rule" of menu "View" of menu bar item "View" of menu bar 1		click menu item "Show Main Window" of menu "Surge" of menu bar item 1 of menu bar 2		activate		delay 0.5		click button 1 of window "Surge"		click menu item "Standard Rule" of menu "Surge" of button 1 of window "Surge"		delay 0.5		set value of text field 1 of group 1 of sheet 1 of window "Surge" to q		set frontmost to true	end tellend tell
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>813CD164-0871-4F71-B0D2-57B1CE1A70B1</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<true/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>102</integer>
+				<key>keyword</key>
+				<string>asl</string>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<true/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Detecting current webpage's URL</string>
+				<key>script</key>
+				<string>xcrun swift /Users/lukas/Developer/SurgeRuleHelper/SurgeRuleHelper/main.swift
+</string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string></string>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Surge Rule Helper</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>2F32F33B-9FFC-4C0A-A411-B7FDD35394C8</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+  tell application "System Events"	tell process "Surge"		try			if (value of static text of sheet 1 of window "Surge") as string is equal to "New Standard Rule" then				click button "Cancel" of sheet 1 of window "Surge"			end if		end try		click menu item "Rule" of menu "View" of menu bar item "View" of menu bar 1		click menu item "Show Main Window" of menu "Surge" of menu bar item 1 of menu bar 2		activate		delay 0.5		click button 1 of window "Surge"		click menu item "AND/OR/NOT Rule" of menu "Surge" of button 1 of window "Surge"
+		set the clipboard to text of q		set frontmost to true	end tellend tell
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>C99D895C-3EB1-4CE3-9FF7-DE5CE241C683</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+  tell application "System Events"	tell process "Surge"		try			if (value of static text of sheet 1 of window "Surge") as string is equal to "New Standard Rule" then				click button "Cancel" of sheet 1 of window "Surge"			end if		end try		click menu item "Rule" of menu "View" of menu bar item "View" of menu bar 1		click menu item "Show Main Window" of menu "Surge" of menu bar item 1 of menu bar 2		activate		delay 0.5		click button 1 of window "Surge"		click menu item "Ruleset" of menu "Surge" of button 1 of window "Surge"
+		set the clipboard to text of q		set frontmost to true	end tellend tell
+end alfred_script</string>
+				<key>cachescript</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>A71E95F3-C424-4EF8-8550-BB04C89451B8</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Keywords are one of Alfred's most commonly used and most useful ways of launching actions. Set a keyword and connect it to the action(s) you want to perform.
+
+Type your keyword into Alfred, followed by your input text if needed, and you'll be on your way to boosting your productivity!</string>
+	<key>uidata</key>
+	<dict>
+		<key>2F32F33B-9FFC-4C0A-A411-B7FDD35394C8</key>
+		<dict>
+			<key>xpos</key>
+			<real>30</real>
+			<key>ypos</key>
+			<real>205</real>
+		</dict>
+		<key>813CD164-0871-4F71-B0D2-57B1CE1A70B1</key>
+		<dict>
+			<key>note</key>
+			<string>Standard Rule</string>
+			<key>xpos</key>
+			<real>340</real>
+			<key>ypos</key>
+			<real>85</real>
+		</dict>
+		<key>A71E95F3-C424-4EF8-8550-BB04C89451B8</key>
+		<dict>
+			<key>note</key>
+			<string>Ruleset</string>
+			<key>xpos</key>
+			<real>340</real>
+			<key>ypos</key>
+			<real>405</real>
+		</dict>
+		<key>C99D895C-3EB1-4CE3-9FF7-DE5CE241C683</key>
+		<dict>
+			<key>note</key>
+			<string>Logical Rule</string>
+			<key>xpos</key>
+			<real>335</real>
+			<key>ypos</key>
+			<real>245</real>
+		</dict>
+	</dict>
+	<key>userconfigurationconfig</key>
+	<array/>
+	<key>version</key>
+	<string>1.0</string>
+	<key>webaddress</key>
+	<string>https://www.alfredapp.com</string>
+</dict>
+</plist>
